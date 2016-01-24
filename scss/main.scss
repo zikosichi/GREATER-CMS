@@ -1,0 +1,165 @@
+@import "compass/css3";
+
+$sidebarWidth : 240px;
+$mainPadding: 15px;
+$navbarHeight: 52px;
+
+
+.navbar{
+	margin-bottom: 0;
+}
+.save-indicator{
+	opacity: 0;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 9999;
+	font-size: 32px;
+	line-height: 10px;
+	color: #36EA3D;
+}
+
+// QUESTIONS BANK
+.sidebar-layout{	
+	.sidebar{
+		padding-top: $navbarHeight;
+		position: fixed;
+		width: $sidebarWidth;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		@include box-shadow(rgba(#000, 0.1) 2px 0 3px);
+		.typecontrols{
+			padding: $mainPadding - 2px;
+		}
+		.level-types{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			margin-top: 20px;
+			.input-group{
+				margin: $mainPadding;
+			}
+			a{
+				cursor: pointer;
+				padding: $mainPadding;
+				display: block;
+				border-top: 1px solid #F6F6F6;
+				&:hover{
+					text-decoration: none;
+					background: #F5F5F5;
+				}
+			}
+		}
+	}
+}
+
+
+.main-content{
+	padding: $mainPadding;
+	padding-left: $sidebarWidth + $mainPadding;
+	padding-top: $navbarHeight + $mainPadding;
+}
+
+.questions-wrapper{
+	@include flexbox((
+		display: flex,
+		flex-direction: row,
+		flex-wrap: wrap,
+		justify-content: space-between
+	));
+}
+
+.left-side{
+	border-right: solid 1px #bbdefb;
+}
+
+.question-item{
+	position: relative;
+	.hidden-block{
+		display: none;
+	}
+	&:hover .hidden-block{
+		display: block;
+	}
+	.remove-question{
+		position: absolute;
+		right: 15px;;
+		top: -35px;
+	}
+	.preview{
+		font-family: "qanelas_soft_demoextrabold";
+		width: 320px;
+		height: 568px;
+		margin: 5px;
+		background: #2e8fcf;
+		.block{
+			color: #fff;
+			height: 50%;
+			font-size: 68px;
+			position: relative;			
+			p{
+				display: none;
+				font-size: 12px;
+			}
+			input.text{
+				background: transparent;
+				border: none;
+				display: block;
+				width: 100%;
+				text-align: center;
+			}
+			input.value{
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				width: 145px;
+			}
+			.buttons{
+				position: absolute;
+				top: 10px;				
+				right: 10px;
+				button{
+					cursor: pointer;
+					float: left;
+					margin-left: 10px;
+				}
+			}
+			.upload{
+				position: relative;
+				width: 40px;
+				height: 34px;
+				input.image{
+					position: absolute;
+					left: 0;
+					top: 0;
+					display: block !important;
+				    width: 100% !important;
+				    height: 100% !important;
+				    opacity: 0 !important;
+				    overflow: hidden !important;
+				}				
+			}
+
+			&.block-flex{
+				img{
+					height: 100px;
+				}
+				@include flexbox((
+					display: flex,
+					align-items: center,
+					justify-content: center,
+					flex-direction: column
+				));
+			}
+
+			&.light{
+				background-color: rgba(#FFF, 0.07);
+			}
+			p{
+				line-height: 100%;
+			}
+		}
+	}
+}

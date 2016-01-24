@@ -1,0 +1,187 @@
+/* line 8, ../scss/main.scss */
+.navbar {
+  margin-bottom: 0;
+}
+
+/* line 11, ../scss/main.scss */
+.save-indicator {
+  opacity: 0;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-size: 32px;
+  line-height: 10px;
+  color: #36EA3D;
+}
+
+/* line 24, ../scss/main.scss */
+.sidebar-layout .sidebar {
+  padding-top: 52px;
+  position: fixed;
+  width: 240px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 2px 0 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 2px 0 3px;
+  box-shadow: rgba(0, 0, 0, 0.1) 2px 0 3px;
+}
+/* line 33, ../scss/main.scss */
+.sidebar-layout .sidebar .typecontrols {
+  padding: 13px;
+}
+/* line 36, ../scss/main.scss */
+.sidebar-layout .sidebar .level-types {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-top: 20px;
+}
+/* line 41, ../scss/main.scss */
+.sidebar-layout .sidebar .level-types .input-group {
+  margin: 15px;
+}
+/* line 44, ../scss/main.scss */
+.sidebar-layout .sidebar .level-types a {
+  cursor: pointer;
+  padding: 15px;
+  display: block;
+  border-top: 1px solid #F6F6F6;
+}
+/* line 49, ../scss/main.scss */
+.sidebar-layout .sidebar .level-types a:hover {
+  text-decoration: none;
+  background: #F5F5F5;
+}
+
+/* line 59, ../scss/main.scss */
+.main-content {
+  padding: 15px;
+  padding-left: 255px;
+  padding-top: 67px;
+}
+
+/* line 65, ../scss/main.scss */
+.questions-wrapper {
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* line 74, ../scss/main.scss */
+.left-side {
+  border-right: solid 1px #bbdefb;
+}
+
+/* line 78, ../scss/main.scss */
+.question-item {
+  position: relative;
+}
+/* line 80, ../scss/main.scss */
+.question-item .hidden-block {
+  display: none;
+}
+/* line 83, ../scss/main.scss */
+.question-item:hover .hidden-block {
+  display: block;
+}
+/* line 86, ../scss/main.scss */
+.question-item .remove-question {
+  position: absolute;
+  right: 15px;
+  top: -35px;
+}
+/* line 91, ../scss/main.scss */
+.question-item .preview {
+  font-family: "qanelas_soft_demoextrabold";
+  width: 320px;
+  height: 568px;
+  margin: 5px;
+  background: #2e8fcf;
+}
+/* line 97, ../scss/main.scss */
+.question-item .preview .block {
+  color: #fff;
+  height: 50%;
+  font-size: 68px;
+  position: relative;
+}
+/* line 102, ../scss/main.scss */
+.question-item .preview .block p {
+  display: none;
+  font-size: 12px;
+}
+/* line 106, ../scss/main.scss */
+.question-item .preview .block input.text {
+  background: transparent;
+  border: none;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+/* line 113, ../scss/main.scss */
+.question-item .preview .block input.value {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 145px;
+}
+/* line 119, ../scss/main.scss */
+.question-item .preview .block .buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+/* line 123, ../scss/main.scss */
+.question-item .preview .block .buttons button {
+  cursor: pointer;
+  float: left;
+  margin-left: 10px;
+}
+/* line 129, ../scss/main.scss */
+.question-item .preview .block .upload {
+  position: relative;
+  width: 40px;
+  height: 34px;
+}
+/* line 133, ../scss/main.scss */
+.question-item .preview .block .upload input.image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+}
+/* line 145, ../scss/main.scss */
+.question-item .preview .block.block-flex {
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+/* line 146, ../scss/main.scss */
+.question-item .preview .block.block-flex img {
+  height: 100px;
+}
+/* line 157, ../scss/main.scss */
+.question-item .preview .block.light {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+/* line 160, ../scss/main.scss */
+.question-item .preview .block p {
+  line-height: 100%;
+}

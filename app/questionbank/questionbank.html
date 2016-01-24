@@ -1,0 +1,72 @@
+<div class="sidebar-layout">
+	<div class="sidebar">
+	
+		<div class="typecontrols">
+			<button ng-click="toggleTypeEdiging()" type="button" class="btn btn-info pull-left">
+				<i ng-if="!typeEditing" class="glyphicon glyphicon-pencil"></i>
+				<i ng-if="typeEditing" class="glyphicon glyphicon-remove"></i>
+			</button>
+			<button ng-if="typeEditing" class="btn btn-info pull-right" ng-click="addNewType()">
+				<i class="glyphicon glyphicon-plus"></i>
+			</button>
+		</div>
+
+		<div class="clearfix"></div>
+
+		<ul class="level-types">
+			<li ng-repeat="type in bank">
+				<a ng-click="selectType(type)" ng-if="!typeEditing">{{type.type}}</a>
+				<div ng-if="typeEditing">
+					<div class="input-group">
+						<input
+							type="text"
+							class="form-control"
+							ng-change="saveType(type)"
+							ng-model="type.type">
+
+						<div class="input-group-addon" ng-click="removeType(type)">
+							<i class="glyphicon glyphicon-trash"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+
+
+	<div class="main-content">
+		<div>
+			<p class="pull-left">{{currentType.type}}</p>
+			<button class="btn btn-info pull-right" ng-click="addNewQuestion()">New Question</button>
+			<button class="btn btn-info pull-right" ng-click="saveQuestions()">Save</button>
+		</div>
+		<div class="clearfix"></div>
+		<div class="questions-wrapper">
+			<div class="question-item" ng-repeat="question in currentType.questions">
+				<button class="btn btn-danger hidden-block remove-question" ng-click="removeQuestion($index)"> <i class="glyphicon glyphicon-trash"></i> </button>
+				<div class="preview">
+					<div class="block block-flex" ng-repeat="option in question" ng-class="{light: $index == 0}">
+						<img ng-if="option.img" ng-src="{{option.img}}">
+						<div class="buttons hidden-block">
+							<button class="upload btn btn-default">
+								<i class="glyphicon glyphicon-open"></i>
+								<input type="file"
+									onchange="angular.element(this).scope().uploadImage(this.files, angular.element(this).scope().question, angular.element(this).scope().$index)"
+									name="upload"
+									class="image form-control">
+							</button>
+							<button ng-if="option.img"
+								class="btn btn-default"
+								ng-click="removeImage(question, $index)">
+								<i class="glyphicon glyphicon-remove"></i>
+							</button>
+						</div>
+						<input class="value form-control hidden-block" type="text" ng-model="option.value">
+						<input class="text" type="text" ng-model="option.text">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
