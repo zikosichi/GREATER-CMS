@@ -3,45 +3,44 @@ function($scope, $firebaseObject, $firebaseArray, $timeout, Helper){
 
 
 	var ref = new Firebase("https://greatr.firebaseio.com/bank");
-	$scope.bank = $firebaseArray(ref);
+	$scope.bank = $firebaseObject(ref);
 
-
-	//GET TYPES AS AN ARRAY
-	// var list = getAsArray(ref);
-	// console.log(list);		
 
 	$scope.bank.$loaded().then(function(){
-		console.log($scope.bank);
-		$scope.currentType = $scope.bank['0'];
+		if (!$scope.bank.types) {
+			$scope.bank.types = [];
+			saveAll();
+		}
+		$scope.currentType = $scope.bank.types[$scope.currentTypeIndex];
 	});
-
-
 
 	// TYPES 
 	$scope.currentType = [];
+	$scope.currentTypeIndex = 0;
 
-	$scope.selectType = function(type){
-		$scope.currentType = type;
+	$scope.selectType = function(index){
+		$scope.currentTypeIndex = index;
+		$scope.currentType = $scope.bank.types[index];
 	};
 
-	$scope.saveType = function(type){
-		$scope.bank.$save(type).then(function(){
-			Helper.lightIndicator();
-		});
+	$scope.saveType = function(){
+		saveAll();
+		$scope.toggleTypeEdiging();
 	};
 
 	$scope.addNewType = function(){
-		$scope.bank.push({
+		$scope.bank.types.push({
 			type: "Type Name",
 			questions: []
 		});
-		$scope.bank.$save($scope.bank);
+		saveAll();
 	};
 
-	$scope.removeType = function(type){
+	$scope.removeType = function(index){
 		var r = confirm("Are you sure?!");
 		if (r === true) {
-			$scope.bank.$remove(type);
+			$scope.bank.types.splice(index, 1);
+			saveAll();
 		}
 	};
 
@@ -64,17 +63,20 @@ function($scope, $firebaseObject, $firebaseArray, $timeout, Helper){
 				"value" : 0
 			}
 		];
+		if (!$scope.currentType.questions) {
+			$scope.currentType.questions = [];
+		}
 		$scope.currentType.questions.unshift(newQuestion);
+		saveAll();
 	};
 
 	$scope.saveQuestions = function(){
-		$scope.bank.$save($scope.currentType).then(function(){
-			Helper.lightIndicator();
-		});
+		saveAll();
 	};
 
 	$scope.removeQuestion = function(index){
-		$scope.currentType.questions.splice(index, 1);
+		$scope.currentType.questions.splice(0, 1);
+		saveAll();
 	};
 
 	$scope.uploadImage = function(files, question, qIdx){
@@ -90,6 +92,13 @@ function($scope, $firebaseObject, $firebaseArray, $timeout, Helper){
 		question[qIdx].img = null;
 		delete question[qIdx].img;
 	};
+
+	function saveAll(){
+		$scope.bank.$save($scope.bank.types).then(function(){
+			$scope.currentType = $scope.bank.types[$scope.currentTypeIndex];
+			Helper.lightIndicator();
+		});
+	}
 
 	
 

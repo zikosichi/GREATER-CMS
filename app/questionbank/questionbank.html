@@ -2,9 +2,11 @@
 	<div class="sidebar">
 	
 		<div class="typecontrols">
-			<button ng-click="toggleTypeEdiging()" type="button" class="btn btn-info pull-left">
-				<i ng-if="!typeEditing" class="glyphicon glyphicon-pencil"></i>
-				<i ng-if="typeEditing" class="glyphicon glyphicon-remove"></i>
+			<button ng-click="toggleTypeEdiging()" type="button" class="btn btn-info pull-left" ng-if="!typeEditing">
+				<i class="glyphicon glyphicon-pencil"></i>
+			</button>
+			<button ng-click="saveType()" type="button" class="btn btn-success pull-left" ng-if="typeEditing">
+				<i class="glyphicon glyphicon-ok"></i>
 			</button>
 			<button ng-if="typeEditing" class="btn btn-info pull-right" ng-click="addNewType()">
 				<i class="glyphicon glyphicon-plus"></i>
@@ -14,17 +16,16 @@
 		<div class="clearfix"></div>
 
 		<ul class="level-types">
-			<li ng-repeat="type in bank">
-				<a ng-click="selectType(type)" ng-if="!typeEditing">{{type.type}}</a>
+			<li ng-repeat="type in bank.types">
+				<a ng-click="selectType($index)" ng-if="!typeEditing">{{type.type}}</a>
 				<div ng-if="typeEditing">
 					<div class="input-group">
 						<input
 							type="text"
 							class="form-control"
-							ng-change="saveType(type)"
 							ng-model="type.type">
 
-						<div class="input-group-addon" ng-click="removeType(type)">
+						<div class="input-group-addon" ng-click="removeType($index)">
 							<i class="glyphicon glyphicon-trash"></i>
 						</div>
 					</div>
