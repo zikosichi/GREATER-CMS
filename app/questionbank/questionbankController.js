@@ -14,6 +14,11 @@ function($scope, $firebaseObject, $firebaseArray, $timeout, Helper){
 		$scope.currentType = $scope.bank.types[$scope.currentTypeIndex];
 	});
 
+	$scope.showSidebar = true;
+	$scope.toggleSidebar = function(){
+		$scope.showSidebar = !$scope.showSidebar;
+	};
+
 	// TYPES 
 	$scope.currentType = [];
 	$scope.currentTypeIndex = 0;

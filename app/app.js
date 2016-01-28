@@ -1,4 +1,4 @@
-var app = angular.module('greaterCMS', ['ui.router', 'firebase'])
+var app = angular.module('greaterCMS', ['ui.router', 'firebase', 'ngTagsInput'])
 
 .config(['$stateProvider', '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {

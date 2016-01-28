@@ -3,7 +3,22 @@
 $sidebarWidth : 240px;
 $mainPadding: 15px;
 $navbarHeight: 52px;
+$base-color: #2C3E50;
+$bg-color: lighten($base-color, 73%);
 
+body{
+	background: $bg-color;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navbar-default {
+	background-color: darken($base-color, 5%);
+	border: none;
+	a{
+		color: $bg-color !important;
+		font-weight: lighter;
+	}
+}
 
 .navbar{
 	margin-bottom: 0;
@@ -11,7 +26,7 @@ $navbarHeight: 52px;
 .save-indicator{
 	opacity: 0;
 	position: fixed;
-	top: 20px;
+	top: 17px;
 	right: 20px;
 	z-index: 9999;
 	font-size: 32px;
@@ -19,55 +34,88 @@ $navbarHeight: 52px;
 	color: #36EA3D;
 }
 
-// QUESTIONS BANK
-.sidebar-layout{	
+.sidebar-opened{
 	.sidebar{
+		left: 0 !important;
+	}
+	.main-content{
+		padding-left: $sidebarWidth !important;
+		@media screen and (max-width: 768px) {
+			min-width: 600px;
+		}
+	}
+}
+
+// QUESTIONS BANK
+.sidebar-layout{
+	.sidebar{
+		background: $base-color;
 		padding-top: $navbarHeight;
 		position: fixed;
 		width: $sidebarWidth;
 		height: 100%;
 		top: 0;
-		left: 0;
+		left: -$sidebarWidth;
 		z-index: 0;
 		@include box-shadow(rgba(#000, 0.1) 2px 0 3px);
 		.typecontrols{
-			padding: $mainPadding - 2px;
+			color: $bg-color;
+			padding: 0px $mainPadding - 2px;
+			i{
+				padding: 10px;
+				border-radius: 2px;
+				cursor: pointer;
+				&:hover{
+					background: rgba(#000, 0.2);
+				}
+			}
 		}
 		.level-types{
 			margin: 0;
 			padding: 0;
 			list-style: none;
-			margin-top: 20px;
+			margin-top: 4px;
 			.input-group{
 				margin: $mainPadding;
 			}
 			a{
+				color: darken($bg-color, 15%);
 				cursor: pointer;
 				padding: $mainPadding;
 				display: block;
-				border-top: 1px solid #F6F6F6;
+				border-top: 1px solid lighten($base-color, 2%);
 				&:hover{
 					text-decoration: none;
-					background: #F5F5F5;
+					background: lighten($base-color, 2%);
 				}
 			}
 		}
 	}
 }
 
+.sub-nav{
+	padding: $mainPadding - 10px $mainPadding;
+	border-bottom: 1px solid $bg-color - 10;
+	p{
+		font-size: 22px;
+		margin: 0;
+	}
+	button{
+		margin-left: 5px;
+	}
+}
 
 .main-content{
-	padding: $mainPadding;
-	padding-left: $sidebarWidth + $mainPadding;
-	padding-top: $navbarHeight + $mainPadding;
+	padding-left: 0;
+	padding-top: $navbarHeight;	
 }
 
 .questions-wrapper{
+	padding: $mainPadding - 10px;
 	@include flexbox((
 		display: flex,
 		flex-direction: row,
-		flex-wrap: wrap,
-		justify-content: space-between
+		flex-wrap: wrap
 	));
 }
 
@@ -76,6 +124,7 @@ $navbarHeight: 52px;
 }
 
 .question-item{
+	margin: 10px;
 	position: relative;
 	.hidden-block{
 		display: none;
@@ -83,83 +132,168 @@ $navbarHeight: 52px;
 	&:hover .hidden-block{
 		display: block;
 	}
-	.remove-question{
-		position: absolute;
-		right: 15px;;
-		top: -35px;
-	}
 	.preview{
 		font-family: "qanelas_soft_demoextrabold";
-		width: 320px;
-		height: 568px;
-		margin: 5px;
+		width: 140px;
+		height: 230px;
 		background: #2e8fcf;
 		.block{
 			color: #fff;
 			height: 50%;
-			font-size: 68px;
-			position: relative;			
-			p{
-				display: none;
-				font-size: 12px;
+			position: relative;
+			img{
+				height: 40px;
 			}
+			@include flexbox((
+				display: flex,
+				align-items: center,
+				justify-content: center,
+				flex-direction: column
+			));
 			input.text{
+				font-size: 28px;
 				background: transparent;
 				border: none;
 				display: block;
 				width: 100%;
 				text-align: center;
 			}
-			input.value{
-				position: absolute;
-				top: 10px;
-				left: 10px;
-				width: 145px;
-			}
-			.buttons{
-				position: absolute;
-				top: 10px;				
-				right: 10px;
-				button{
-					cursor: pointer;
-					float: left;
-					margin-left: 10px;
-				}
-			}
-			.upload{
-				position: relative;
-				width: 40px;
-				height: 34px;
-				input.image{
-					position: absolute;
-					left: 0;
-					top: 0;
-					display: block !important;
-				    width: 100% !important;
-				    height: 100% !important;
-				    opacity: 0 !important;
-				    overflow: hidden !important;
-				}				
-			}
-
-			&.block-flex{
-				img{
-					height: 100px;
-				}
-				@include flexbox((
-					display: flex,
-					align-items: center,
-					justify-content: center,
-					flex-direction: column
-				));
-			}
-
 			&.light{
 				background-color: rgba(#FFF, 0.07);
 			}
-			p{
-				line-height: 100%;
+		}
+	}
+	.edit-question{
+		z-index: 2;
+		width: 33px;
+		position: absolute;
+		left: 140px;
+    	top: -1px;
+		border-radius: 0 5px 5px 0;
+		border: 1px solid rgba(#2C3E50, 0.1);
+		background: #FFF;
+		.block{
+			padding: $mainPadding - 12px;
+			height: 115px;
+			position: relative;
+		}
+		button, input{
+			width: 100%;
+			font-size: 11px;
+		}
+		input{
+			&:hover{
+				width: 300%;
+			}
+		}
+		button{
+			padding: 3px;
+			margin-bottom: 5px;
+		}
+		.upload{
+			position: relative;
+			width: 100%;
+			height: 23px;
+			input.image{
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: block !important;
+			    width: 100% !important;
+			    height: 100% !important;
+			    opacity: 0 !important;
+			    overflow: hidden !important;
+			}
+		}
+	}
+	header{
+		position: absolute;
+		width: 140px;
+		height: 27px;
+		top: -27px;
+		left: 0;
+		background: #2C3E50;
+		border-radius: 5px 5px 0 0;
+		color: #FFF;
+		padding: 7px;
+		font-size: 11px;
+		i{
+			cursor: pointer;
+		}
+	}
+}
+
+// LEVELS
+.full-width{
+	padding-top: $navbarHeight;
+}
+
+.levels{
+	@include flexbox((
+		display: flex,
+		flex-wrap: wrap
+	));
+	padding: $mainPadding;
+	.level-item{
+		margin: 5px;
+		width: 200px;
+		background: #FFF;
+		padding: $mainPadding;
+		border-radius: 5px;
+		border-bottom: 3px solid $base-color + 50;
+		@include box-shadow(rgba(#000, 0.05) 0 0 5px);
+		.level-name{
+			border: none;
+			font-size: 22px;
+			background: transparent;
+			width: 100%;
+		}
+		label{
+			font-weight:200;
+			margin: 0;
+			margin-top: 10px;
+		}
+		.plain{
+			font-size: 16px;
+			width: 100%;
+			margin: 5px 0;
+			border: 1px solid #EFF2FA;
+			border-radius: 3px;
+			padding: 5px;
+			// @include box-shadow(rgba(#000, 0.05) 0px 1px 3px);
+		}
+		.tags{
+			font-size: 16px;
+			width: 100%;
+			margin: 5px 0;
+			padding: 0;
+			border: none;
+			border: 1px solid #EFF2FA !important;
+			border-radius: 3px;
+			-webkit-appearance: initial;
+			@include box-shadow(none);
+			.tag-item{
+				border: none;
+				border-radius: 3px;
+				background: $base-color + 150;
+				color: $base-color;
 			}
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

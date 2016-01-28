@@ -1,16 +1,10 @@
-<div class="sidebar-layout">
+<div class="sidebar-layout" ng-class="{'sidebar-opened': showSidebar}">
 	<div class="sidebar">
 	
 		<div class="typecontrols">
-			<button ng-click="toggleTypeEdiging()" type="button" class="btn btn-info pull-left" ng-if="!typeEditing">
-				<i class="glyphicon glyphicon-pencil"></i>
-			</button>
-			<button ng-click="saveType()" type="button" class="btn btn-success pull-left" ng-if="typeEditing">
-				<i class="glyphicon glyphicon-ok"></i>
-			</button>
-			<button ng-if="typeEditing" class="btn btn-info pull-right" ng-click="addNewType()">
-				<i class="glyphicon glyphicon-plus"></i>
-			</button>
+			<i ng-click="toggleTypeEdiging()" ng-if="!typeEditing" class="glyphicon glyphicon-pencil"></i>
+			<i ng-click="saveType()" ng-if="typeEditing" class="glyphicon glyphicon-ok"></i>
+			<i ng-click="addNewType()" ng-if="typeEditing" class="glyphicon glyphicon-plus"></i>
 		</div>
 
 		<div class="clearfix"></div>
@@ -37,19 +31,37 @@
 
 
 	<div class="main-content">
-		<div>
-			<p class="pull-left">{{currentType.type}}</p>
-			<button class="btn btn-info pull-right" ng-click="addNewQuestion()">New Question</button>
-			<button class="btn btn-info pull-right" ng-click="saveQuestions()">Save</button>
+		<div class="sub-nav">
+			<p class="pull-left">
+				<i class="glyphicon glyphicon-align-justify" ng-click="toggleSidebar()"></i>
+				{{currentType.type}}
+			</p>
+			<button class="btn btn-sm btn-info pull-right" ng-click="addNewQuestion()">
+				<i class="glyphicon glyphicon-plus"></i> New Question
+			</button>
+			<button class="btn btn-sm btn-info pull-right" ng-click="saveQuestions()">
+				<i class="glyphicon glyphicon-plane"></i> Save
+			</button>
+			<div class="clearfix"></div>
 		</div>
-		<div class="clearfix"></div>
 		<div class="questions-wrapper">
 			<div class="question-item" ng-repeat="question in currentType.questions">
-				<button class="btn btn-danger hidden-block remove-question" ng-click="removeQuestion($index)"> <i class="glyphicon glyphicon-trash"></i> </button>
+				
+				<header class="hidden-block">
+					<i ng-click="removeQuestion($index)" class="glyphicon glyphicon-trash"></i>
+					<!-- <i ng-click="removeQuestion($index)" class="glyphicon glyphicon-pencil pull-right"></i>		 -->
+				</header>
+				
 				<div class="preview">
-					<div class="block block-flex" ng-repeat="option in question" ng-class="{light: $index == 0}">
-						<img ng-if="option.img" ng-src="{{option.img}}">
-						<div class="buttons hidden-block">
+					<div class="block" ng-repeat="option in question" ng-class="{light: $index == 0}">
+						<img ng-if="option.img" ng-src="{{option.img}}">						
+						<input class="text" type="text" ng-model="option.text">
+					</div>
+				</div>
+
+				<div class="edit-question hidden-block">
+					<div class="block" ng-repeat="option in question">
+						<div class="buttons">
 							<button class="upload btn btn-default">
 								<i class="glyphicon glyphicon-open"></i>
 								<input type="file"
@@ -63,10 +75,10 @@
 								<i class="glyphicon glyphicon-remove"></i>
 							</button>
 						</div>
-						<input class="value form-control hidden-block" type="text" ng-model="option.value">
-						<input class="text" type="text" ng-model="option.text">
+						<input class="value" type="text" ng-model="option.value" placeholder="Val">
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
