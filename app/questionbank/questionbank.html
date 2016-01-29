@@ -62,9 +62,9 @@
 				<div class="edit-question hidden-block">
 					<div class="block" ng-repeat="option in question">
 						<div class="buttons">
-							<button class="upload btn btn-default">
+							<button tabindex="-1" class="upload btn btn-default">
 								<i class="glyphicon glyphicon-open"></i>
-								<input type="file"
+								<input tabindex="-1" type="file"
 									onchange="angular.element(this).scope().uploadImage(this.files, angular.element(this).scope().question, angular.element(this).scope().$index)"
 									name="upload"
 									class="image form-control">

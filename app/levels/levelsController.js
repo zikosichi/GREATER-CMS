@@ -19,6 +19,7 @@ function($scope, $http, $firebaseObject, $firebaseArray, Helper){
 			"name" : "",
 			"questionsFrom" : [],
 			"maxScore" : "",
+			"questionTime" : 0,
 			"currentScore" : 0,
 			"status" : "locked"
 		});

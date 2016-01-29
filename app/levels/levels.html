@@ -13,10 +13,22 @@
 	<div class="levels">
 		<div class="level-item" ng-repeat="level in levels">
 			<input class="level-name" type="text" ng-model="level.name" placeholder="Level Name">
+			
 			<label>Level Id:</label>
 			<input class="plain" type="text" ng-model="level.id" placeholder="Level Id">
+			
 			<label>Max Score:</label>
 			<input class="plain" type="text" ng-model="level.maxScore" placeholder="Maximum Score">
+			
+			<label>Question time:</label>
+			<input class="plain" type="text" ng-model="level.questionTime" placeholder="Seconds">
+			
+			<label>Checkpoint Interval:</label>
+			<input class="plain" type="text" ng-model="level.checkpointInterval" placeholder="Questions quantity">
+
+			<label>Level Color:</label>
+			<input class="plain" type="text" ng-model="level.color" placeholder="Hex">
+			
 			<label>Questions From:</label>
 			<tags-input ng-model="level.questionsFrom" placeholder="Type"></tags-input>
 		</div>
