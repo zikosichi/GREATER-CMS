@@ -236,7 +236,8 @@ body{
 	padding: $mainPadding;
 	.level-item{
 		margin: 5px;
-		width: 200px;
+		width: 100%;
+		max-width: 350px;
 		background: #FFF;
 		padding: $mainPadding;
 		border-radius: 5px;
@@ -257,7 +258,7 @@ body{
 			font-size: 16px;
 			width: 100%;
 			margin: 5px 0;
-			border: 1px solid #EFF2FA;
+			border: 1px solid #E5E8F1;
 			border-radius: 3px;
 			padding: 5px;
 			// @include box-shadow(rgba(#000, 0.05) 0px 1px 3px);
@@ -268,7 +269,7 @@ body{
 			margin: 5px 0;
 			padding: 0;
 			border: none;
-			border: 1px solid #EFF2FA !important;
+			border: 1px solid #E5E8F1 !important;
 			border-radius: 3px;
 			-webkit-appearance: initial;
 			@include box-shadow(none);

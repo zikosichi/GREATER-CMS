@@ -271,7 +271,8 @@ body {
 /* line 237, ../scss/main.scss */
 .levels .level-item {
   margin: 5px;
-  width: 200px;
+  width: 100%;
+  max-width: 350px;
   background: #FFF;
   padding: 15px;
   border-radius: 5px;
@@ -280,43 +281,43 @@ body {
   -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0 0 5px;
   box-shadow: rgba(0, 0, 0, 0.05) 0 0 5px;
 }
-/* line 245, ../scss/main.scss */
+/* line 246, ../scss/main.scss */
 .levels .level-item .level-name {
   border: none;
   font-size: 22px;
   background: transparent;
   width: 100%;
 }
-/* line 251, ../scss/main.scss */
+/* line 252, ../scss/main.scss */
 .levels .level-item label {
   font-weight: 200;
   margin: 0;
   margin-top: 10px;
 }
-/* line 256, ../scss/main.scss */
+/* line 257, ../scss/main.scss */
 .levels .level-item .plain {
   font-size: 16px;
   width: 100%;
   margin: 5px 0;
-  border: 1px solid #EFF2FA;
+  border: 1px solid #E5E8F1;
   border-radius: 3px;
   padding: 5px;
 }
-/* line 265, ../scss/main.scss */
+/* line 266, ../scss/main.scss */
 .levels .level-item .tags {
   font-size: 16px;
   width: 100%;
   margin: 5px 0;
   padding: 0;
   border: none;
-  border: 1px solid #EFF2FA !important;
+  border: 1px solid #E5E8F1 !important;
   border-radius: 3px;
   -webkit-appearance: initial;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 275, ../scss/main.scss */
+/* line 276, ../scss/main.scss */
 .levels .level-item .tags .tag-item {
   border: none;
   border-radius: 3px;

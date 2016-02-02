@@ -14,23 +14,36 @@
 		<div class="level-item" ng-repeat="level in levels">
 			<input class="level-name" type="text" ng-model="level.name" placeholder="Level Name">
 			
-			<label>Level Id:</label>
-			<input class="plain" type="text" ng-model="level.id" placeholder="Level Id">
-			
-			<label>Max Score:</label>
-			<input class="plain" type="text" ng-model="level.maxScore" placeholder="Maximum Score">
-			
-			<label>Question time:</label>
-			<input class="plain" type="text" ng-model="level.questionTime" placeholder="Seconds">
-			
-			<label>Checkpoint Interval:</label>
-			<input class="plain" type="text" ng-model="level.checkpointInterval" placeholder="Questions quantity">
-
-			<label>Level Color:</label>
-			<input class="plain" type="text" ng-model="level.color" placeholder="Hex">
-			
-			<label>Questions From:</label>
-			<tags-input ng-model="level.questionsFrom" placeholder="Type"></tags-input>
+			<div class="row">
+				<div class="col-md-6">
+					<label>Level Id:</label>
+					<input class="plain" type="text" ng-model="level.id" placeholder="Level Id">
+					
+					<label>Max Score:</label>
+					<input class="plain" type="text" ng-model="level.maxScore" placeholder="Maximum Score">
+					
+					<label>Question time:</label>
+					<input class="plain" type="text" ng-model="level.questionTime" placeholder="Seconds">
+					
+				</div>
+				
+				<div class="col-md-6">
+					<label>Level Color:</label>
+					<input class="plain" type="text" ng-model="level.color" placeholder="Hex">
+					
+					<label>Progress Color:</label>
+					<input class="plain" type="text" ng-model="level.progressColor" placeholder="Hex">
+					
+					<label>Checkpoint Interval:</label>
+					<input class="plain" type="text" ng-model="level.checkpointInterval" placeholder="Questions quantity">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<label>Questions From:</label>
+					<tags-input ng-model="level.questionsFrom" placeholder="Type"></tags-input>
+				</div>
+			</div>
 		</div>
 	</div>
 	
