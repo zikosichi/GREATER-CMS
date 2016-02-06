@@ -36,16 +36,14 @@ function($scope, $firebaseObject, $firebaseArray, $timeout, Helper){
 	$scope.addNewType = function(){
 		$scope.bank.types.push({
 			type: "Type Name",
-			questions: []
+			questionsBlock: []
 		});
-		saveAll();
 	};
 
 	$scope.removeType = function(index){
 		var r = confirm("Are you sure?!");
 		if (r === true) {
 			$scope.bank.types.splice(index, 1);
-			saveAll();
 		}
 	};
 
@@ -57,7 +55,15 @@ function($scope, $firebaseObject, $firebaseArray, $timeout, Helper){
 
 
 	// TYPE QUESTIONS
-	$scope.addNewQuestion = function(){
+	$scope.addNewQuestionsBlock = function(){
+		if (!$scope.currentType.questionsBlock) {
+			$scope.currentType.questionsBlock = [];
+		}
+		$scope.currentType.questionsBlock.push([]);
+	};
+
+	$scope.addNewQuestion = function(questionBlock){
+		console.log(questionBlock);
 		var newQuestion = [
 			{
 				"text" : "0",
@@ -68,20 +74,18 @@ function($scope, $firebaseObject, $firebaseArray, $timeout, Helper){
 				"value" : 0
 			}
 		];
-		if (!$scope.currentType.questions) {
-			$scope.currentType.questions = [];
-		}
-		$scope.currentType.questions.unshift(newQuestion);
-		saveAll();
+		/*if (!questionBlock.questions) {
+			questionBlock.questions = [];
+		}*/
+		questionBlock.push(newQuestion);
 	};
 
 	$scope.saveQuestions = function(){
 		saveAll();
 	};
 
-	$scope.removeQuestion = function(index){
-		$scope.currentType.questions.splice(0, 1);
-		saveAll();
+	$scope.removeQuestion = function(questionBlock, index){
+		questionBlock.splice(index, 1);
 	};
 
 	$scope.uploadImage = function(files, question, qIdx){
@@ -104,6 +108,11 @@ function($scope, $firebaseObject, $firebaseArray, $timeout, Helper){
 			Helper.lightIndicator();
 		});
 	}
+
+
+	$scope.toggleView = function(){
+		$scope.gridView = !$scope.gridView;
+	};
 
 	
 

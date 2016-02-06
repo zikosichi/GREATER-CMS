@@ -1,6 +1,6 @@
 /* line 9, ../scss/main.scss */
 body {
-  background: #f6f8fa;
+  background: #f3f6f8;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -11,7 +11,7 @@ body {
 }
 /* line 17, ../scss/main.scss */
 .navbar-default a {
-  color: #f6f8fa !important;
+  color: #f3f6f8 !important;
   font-weight: lighter;
 }
 
@@ -63,7 +63,7 @@ body {
 }
 /* line 61, ../scss/main.scss */
 .sidebar-layout .sidebar .typecontrols {
-  color: #f6f8fa;
+  color: #f3f6f8;
   padding: 0px 13px;
 }
 /* line 64, ../scss/main.scss */
@@ -89,7 +89,7 @@ body {
 }
 /* line 81, ../scss/main.scss */
 .sidebar-layout .sidebar .level-types a {
-  color: #c5d2df;
+  color: #c2cfdd;
   cursor: pointer;
   padding: 15px;
   display: block;
@@ -104,7 +104,7 @@ body {
 /* line 96, ../scss/main.scss */
 .sub-nav {
   padding: 5px 15px;
-  border-bottom: 1px solid #eceef0;
+  border-bottom: 1px solid #e9ecee;
 }
 /* line 99, ../scss/main.scss */
 .sub-nav p {
@@ -125,6 +125,42 @@ body {
 /* line 113, ../scss/main.scss */
 .questions-wrapper {
   padding: 5px;
+}
+/* line 115, ../scss/main.scss */
+.questions-wrapper.grid-view {
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/* line 122, ../scss/main.scss */
+.questions-wrapper .questions-block {
+  background: #FFF;
+  border-radius: 3px;
+  margin: 10px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 3px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 3px;
+}
+/* line 127, ../scss/main.scss */
+.questions-wrapper .questions-block .header {
+  border-bottom: 1px solid #eceff1;
+  border-radius: 3px 3px 0 0;
+  padding: 10px;
+}
+/* line 132, ../scss/main.scss */
+.questions-wrapper .questions-block .header h1 {
+  display: inline-block;
+  margin: 0;
+  margin-top: 4px;
+  margin-left: 15px;
+  font-size: 14px;
+  color: #90a2b4;
+}
+/* line 141, ../scss/main.scss */
+.questions-wrapper .questions-block .questions-block-wrapper {
   display: -webkit-flex;
   -webkit-flex-direction: row;
   -webkit-flex-wrap: wrap;
@@ -133,32 +169,32 @@ body {
   flex-wrap: wrap;
 }
 
-/* line 122, ../scss/main.scss */
+/* line 151, ../scss/main.scss */
 .left-side {
   border-right: solid 1px #bbdefb;
 }
 
-/* line 126, ../scss/main.scss */
+/* line 155, ../scss/main.scss */
 .question-item {
   margin: 10px;
   position: relative;
 }
-/* line 129, ../scss/main.scss */
+/* line 158, ../scss/main.scss */
 .question-item .hidden-block {
   display: none;
 }
-/* line 132, ../scss/main.scss */
+/* line 161, ../scss/main.scss */
 .question-item:hover .hidden-block {
   display: block;
 }
-/* line 135, ../scss/main.scss */
+/* line 164, ../scss/main.scss */
 .question-item .preview {
-  font-family: "ikaros_sans_regularregular";
+  font-family: "qanelas_soft_demoextrabold";
   width: 140px;
   height: 230px;
   background: #2e8fcf;
 }
-/* line 140, ../scss/main.scss */
+/* line 169, ../scss/main.scss */
 .question-item .preview .block {
   color: #fff;
   height: 50%;
@@ -172,11 +208,11 @@ body {
   justify-content: center;
   flex-direction: column;
 }
-/* line 144, ../scss/main.scss */
+/* line 173, ../scss/main.scss */
 .question-item .preview .block img {
   height: 40px;
 }
-/* line 153, ../scss/main.scss */
+/* line 182, ../scss/main.scss */
 .question-item .preview .block input.text {
   font-size: 28px;
   background: transparent;
@@ -185,11 +221,11 @@ body {
   width: 100%;
   text-align: center;
 }
-/* line 161, ../scss/main.scss */
+/* line 190, ../scss/main.scss */
 .question-item .preview .block.light {
   background-color: rgba(255, 255, 255, 0.07);
 }
-/* line 166, ../scss/main.scss */
+/* line 195, ../scss/main.scss */
 .question-item .edit-question {
   z-index: 2;
   width: 33px;
@@ -200,33 +236,33 @@ body {
   border: 1px solid rgba(44, 62, 80, 0.1);
   background: #FFF;
 }
-/* line 175, ../scss/main.scss */
+/* line 204, ../scss/main.scss */
 .question-item .edit-question .block {
   padding: 3px;
   height: 115px;
   position: relative;
 }
-/* line 180, ../scss/main.scss */
+/* line 209, ../scss/main.scss */
 .question-item .edit-question button, .question-item .edit-question input {
   width: 100%;
   font-size: 11px;
 }
-/* line 185, ../scss/main.scss */
+/* line 214, ../scss/main.scss */
 .question-item .edit-question input:hover {
   width: 300%;
 }
-/* line 189, ../scss/main.scss */
+/* line 218, ../scss/main.scss */
 .question-item .edit-question button {
   padding: 3px;
   margin-bottom: 5px;
 }
-/* line 193, ../scss/main.scss */
+/* line 222, ../scss/main.scss */
 .question-item .edit-question .upload {
   position: relative;
   width: 100%;
   height: 23px;
 }
-/* line 197, ../scss/main.scss */
+/* line 226, ../scss/main.scss */
 .question-item .edit-question .upload input.image {
   position: absolute;
   left: 0;
@@ -237,7 +273,7 @@ body {
   opacity: 0 !important;
   overflow: hidden !important;
 }
-/* line 209, ../scss/main.scss */
+/* line 238, ../scss/main.scss */
 .question-item header {
   position: absolute;
   width: 140px;
@@ -250,17 +286,17 @@ body {
   padding: 7px;
   font-size: 11px;
 }
-/* line 220, ../scss/main.scss */
+/* line 249, ../scss/main.scss */
 .question-item header i {
   cursor: pointer;
 }
 
-/* line 227, ../scss/main.scss */
+/* line 256, ../scss/main.scss */
 .full-width {
   padding-top: 52px;
 }
 
-/* line 231, ../scss/main.scss */
+/* line 260, ../scss/main.scss */
 .levels {
   display: -webkit-flex;
   -webkit-flex-wrap: wrap;
@@ -268,7 +304,7 @@ body {
   flex-wrap: wrap;
   padding: 15px;
 }
-/* line 237, ../scss/main.scss */
+/* line 266, ../scss/main.scss */
 .levels .level-item {
   margin: 5px;
   width: 100%;
@@ -281,20 +317,20 @@ body {
   -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0 0 5px;
   box-shadow: rgba(0, 0, 0, 0.05) 0 0 5px;
 }
-/* line 246, ../scss/main.scss */
+/* line 275, ../scss/main.scss */
 .levels .level-item .level-name {
   border: none;
   font-size: 22px;
   background: transparent;
   width: 100%;
 }
-/* line 252, ../scss/main.scss */
+/* line 281, ../scss/main.scss */
 .levels .level-item label {
   font-weight: 200;
   margin: 0;
   margin-top: 10px;
 }
-/* line 257, ../scss/main.scss */
+/* line 286, ../scss/main.scss */
 .levels .level-item .plain {
   font-size: 16px;
   width: 100%;
@@ -303,7 +339,7 @@ body {
   border-radius: 3px;
   padding: 5px;
 }
-/* line 266, ../scss/main.scss */
+/* line 295, ../scss/main.scss */
 .levels .level-item .tags {
   font-size: 16px;
   width: 100%;
@@ -317,7 +353,7 @@ body {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 276, ../scss/main.scss */
+/* line 305, ../scss/main.scss */
 .levels .level-item .tags .tag-item {
   border: none;
   border-radius: 3px;

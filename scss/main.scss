@@ -4,7 +4,7 @@ $sidebarWidth : 240px;
 $mainPadding: 15px;
 $navbarHeight: 52px;
 $base-color: #2C3E50;
-$bg-color: lighten($base-color, 73%);
+$bg-color: lighten($base-color, 72%);
 
 body{
 	background: $bg-color;
@@ -112,11 +112,40 @@ body{
 
 .questions-wrapper{
 	padding: $mainPadding - 10px;
-	@include flexbox((
-		display: flex,
-		flex-direction: row,
-		flex-wrap: wrap
-	));
+	&.grid-view{
+		@include flexbox((
+			display: flex,
+			flex-direction: row,
+			flex-wrap: wrap
+		));		
+	}
+	.questions-block{
+		background: #FFF;
+		border-radius: 3px;
+		margin: 10px;
+		@include box-shadow(rgba(#000, 0.1) 0 2px 3px);
+		.header{
+			// background: $bg-color - 5;
+			border-bottom: 1px solid $bg-color - 7;
+			border-radius: 3px 3px 0 0;
+			padding: 10px;
+			h1{
+				display: inline-block;
+				margin: 0;
+				margin-top: 4px;
+				margin-left: 15px;
+				font-size: 14px;
+				color: $base-color + 100;
+			}
+		}
+		.questions-block-wrapper{
+			@include flexbox((
+				display: flex,
+				flex-direction: row,
+				flex-wrap: wrap
+			));
+		}
+	}
 }
 
 .left-side{
@@ -133,7 +162,7 @@ body{
 		display: block;
 	}
 	.preview{
-		font-family: "ikaros_sans_regularregular";
+		font-family: "qanelas_soft_demoextrabold";
 		width: 140px;
 		height: 230px;
 		background: #2e8fcf;

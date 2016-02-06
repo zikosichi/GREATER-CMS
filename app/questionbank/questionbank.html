@@ -34,51 +34,71 @@
 		<div class="sub-nav">
 			<p class="pull-left">
 				<i class="glyphicon glyphicon-align-justify" ng-click="toggleSidebar()"></i>
-				{{currentType.type}}
+				{{currentType.type}} ( {{currentType.questionsBlock.length}} blocks )
 			</p>
-			<button class="btn btn-sm btn-info pull-right" ng-click="addNewQuestion()">
-				<i class="glyphicon glyphicon-plus"></i> New Question
+			<button class="btn btn-sm btn-info pull-right" ng-click="addNewQuestionsBlock()">
+				<i class="glyphicon glyphicon-plus"></i> New Question Bock
 			</button>
 			<button class="btn btn-sm btn-info pull-right" ng-click="saveQuestions()">
 				<i class="glyphicon glyphicon-plane"></i> Save
 			</button>
+			<button class="btn btn-sm btn-default pull-right" ng-click="toggleView()">
+				<i ng-if="!gridView" class="glyphicon glyphicon-align-justify"></i>
+				<i ng-if="gridView"  class="glyphicon glyphicon-th-large"></i>
+			</button>
 			<div class="clearfix"></div>
 		</div>
-		<div class="questions-wrapper">
-			<div class="question-item" ng-repeat="question in currentType.questions">
-				
-				<header class="hidden-block">
-					<i ng-click="removeQuestion($index)" class="glyphicon glyphicon-trash"></i>
-					<!-- <i ng-click="removeQuestion($index)" class="glyphicon glyphicon-pencil pull-right"></i>		 -->
-				</header>
-				
-				<div class="preview">
-					<div class="block" ng-repeat="option in question" ng-class="{light: $index == 0}">
-						<img ng-if="option.img" ng-src="{{option.img}}">						
-						<input class="text" type="text" ng-model="option.text">
-					</div>
+		<div class="questions-wrapper" ng-class="{'grid-view': gridView}">
+
+
+			<div class="questions-block" ng-repeat="questionsBlock in currentType.questionsBlock">
+
+				<div class="header">
+					<button class="btn btn-xs btn-sm btn-info pull-left" ng-click="addNewQuestion(questionsBlock)">
+						<i class="glyphicon glyphicon-plus"></i> New Question
+					</button>
+					<h1 class="pull-left">{{questionsBlock.length}} questions</h1>
+					<h1 class="pull-right">Block {{$index + 1}}</h1>
+					<div class="clearfix"></div>
 				</div>
 
-				<div class="edit-question hidden-block">
-					<div class="block" ng-repeat="option in question">
-						<div class="buttons">
-							<button tabindex="-1" class="upload btn btn-default">
-								<i class="glyphicon glyphicon-open"></i>
-								<input tabindex="-1" type="file"
-									onchange="angular.element(this).scope().uploadImage(this.files, angular.element(this).scope().question, angular.element(this).scope().$index)"
-									name="upload"
-									class="image form-control">
-							</button>
-							<button ng-if="option.img"
-								class="btn btn-default"
-								ng-click="removeImage(question, $index)">
-								<i class="glyphicon glyphicon-remove"></i>
-							</button>
+				<div class="questions-block-wrapper">
+					<div class="question-item" ng-repeat="question in questionsBlock">
+						
+						<header class="hidden-block">
+							<i ng-click="removeQuestion(questionsBlock, $index)" class="glyphicon glyphicon-trash"></i>
+							<!-- <i ng-click="removeQuestion($index)" class="glyphicon glyphicon-pencil pull-right"></i>		 -->
+						</header>
+						
+						<div class="preview">
+							<div class="block" ng-repeat="option in question" ng-class="{light: $index == 0}">
+								<img ng-if="option.img" ng-src="{{option.img}}">						
+								<input class="text" type="text" ng-model="option.text">
+							</div>
 						</div>
-						<input class="value" type="text" ng-model="option.value" placeholder="Val">
+					
+						<div class="edit-question hidden-block">					
+							<div class="block" ng-repeat="option in question">
+								<div class="buttons">
+									<button tabindex="-1" class="upload btn btn-default">
+										<i class="glyphicon glyphicon-open"></i>
+										<input tabindex="-1" type="file"
+											onchange="angular.element(this).scope().uploadImage(this.files, angular.element(this).scope().question, angular.element(this).scope().$index)"
+											name="upload"
+											class="image form-control">
+									</button>
+									<button ng-if="option.img"
+										class="btn btn-default"
+										ng-click="removeImage(question, $index)">
+										<i class="glyphicon glyphicon-remove"></i>
+									</button>
+								</div>
+								<input class="value" type="text" ng-model="option.value" placeholder="Val">
+							</div>
+						</div>
+					
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
